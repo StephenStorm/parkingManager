@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/login.css">
+	<title>用户注册</title>
+	<script type="text/javascript">
+		function check(){
+			var password=document.getElementById("passwd").value;
+			var confirm=document.getElementById("confirm").value;
+			if(password!=confirm){
+				alert('两次密码不一致,请重新输入');
+				return false;
+			}
+			return true;
+		}
+	</script>
+</head>
+<body>
+		<section>
+		<div>
+			<div class="container">
+				<div class="header">
+
+						<a href="userlogin.php" style="display:inline-block; width: 25px; height:25px; margin-top:12px;margin-left: 12px;"><img src="images/back.png" width="30px" height="30px"></a>
+						<label class="lbl-1"></label>
+						<label class="lbl-2"></label>
+						<label class="lbl-3"></label>
+					</div>
+					
+				<div class="head"> 
+					<img src="images/head.png" width="65px" height="65px" align="ccenter" />
+					<form action="reg.php" method="post">
+					<div class="input1">
+						<img src="images/user.png">
+						<input type="text" name="username" placeholder="用户名" pattern="\w{4,20}" required="required">
+					</div>
+					<div class="input1">
+						<img src="images/pswd.png">
+						<input type="password" name="passwd" placeholder="密码" pattern="\w{8,20}" required="required">
+					</div>
+					<div class="input1">
+						<img src="images/ensure.png">
+						<input type="password" name="confirm" placeholder="确认密码" pattern="\w{8,20}" required="required">
+					</div>
+					<div class="input1">
+						<img src="images/car.png">
+						<input type="text" name="licensePlate" placeholder="车牌号"  pattern="[a-zA-Z0-9]{6}" required="required">
+					</div>
+					<div class="input1">
+						<img src="images/tel.png">
+						<input type="text" name="tel" placeholder="手机号" pattern="[0-9]{11}" required="required">
+					</div>
+					
+					<div>
+						<input type="submit" class="sub2" name="regist" value="注册">
+					</div>
+				</form>
+				</div>
+	
+			</div>
+		</div>
+	</section>
+</body>
+</html>

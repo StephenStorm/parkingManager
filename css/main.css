@@ -1,0 +1,146 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	height: 100%;
+	background-color:#333;
+}
+html{
+	height: 100%;
+}
+#div2{
+	width:250px;
+	height: 155px;
+	border-radius:5px;
+	background-color: #f7f9fa;
+}
+#info{
+	display: none;
+	width:250px;
+/*	position: absolute;
+	top: 35px;
+	left: 103px;*/
+	position: relative;
+	left: -97px;
+	top: -9px;
+}
+#tri{
+	margin:0 auto;
+	width:0;
+	height:0;
+	border-width:10px;
+	border-style:solid dashed dashed dashed;	
+	border-color:transparent transparent white transparent;
+}
+.img{
+	margin: 5px 65px 5px 10px;
+	padding: 0;
+	width: 35px;
+	height: 35px;
+	float: left;
+}
+.bg{
+	height:45px;
+	width: 100%;
+	background-color: black;
+}
+.header{
+	margin: 0 auto;
+	font-size: 18px;
+	font-family: "楷体";
+	line-height: 45px;
+	height: 45px;
+	width: 850px;
+}
+.header1{
+	float:left;
+	height: 45px;
+	width: 600px;
+}
+#exit{
+	font-size: 0.9em;
+	position:absolute;
+	bottom: 5px;
+	right: 5px;
+	height: 20px;
+	line-height: 20px;
+	width: 85px;
+	border-radius:5px;
+}
+.header1 a{
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	text-align: center;
+	display: inline-block;
+	height: 45px;
+	line-height: 45px;
+	font-weight: bold;
+	text-decoration: none;
+	color:white;
+	width: 100px;
+	margin-left: 10px;
+}
+a:hover {
+	color: #f1c85f;
+	background-color: #F4615C;
+	-webkit-transition: 1s all;
+}
+.header2{
+	float: right;
+	height: 45px;
+	width: 220px;
+}
+.header2 .time{
+	float: left;
+	width: 240px;
+	height: 45px;
+}
+.header2 .light{
+	width: 160px;
+	float: right;
+	height: 45px;
+	overflow: hidden;
+}
+.tipbk{
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	height: 45px;
+	width: 100%;
+}
+.header1 a.active{
+	color: #f1c85f;
+	background-color: #333;
+}
+.tabh{
+	width: 200px;
+	margin:0 auto;
+}
+label.lbl-1 {
+  background: #6756ea;
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  float: right;
+  border-radius: 50%;
+  margin:11px 30px 12px 0;
+  color: grey;
+}
+label.lbl-2 {
+  background: #ea569a;
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  float: right;
+  border-radius: 50%;
+   margin: 12px 30px 13px 0;
+}
+label.lbl-3 {
+  background: #f1c85f;
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  float: right;
+  border-radius: 50%;
+  margin: 12px 30px 13px 0;
+}

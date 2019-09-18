@@ -1,0 +1,65 @@
+﻿<?php 
+	session_start();
+	function get_start_time($username,$lock_id,$endTime){
+		$db=mysqli_connect('localhost','root','','parking')or die('连接服务器失败');
+		$sq="select startTime from history where username=\"{$username}\" and lotID={$lock_id} and endTime={$endTime}";
+		$result=mysqli_query($db,$sq);
+		mysqli_close($db);
+		return $result;
+	}
+	function change_end_time($username,$lock_id,$endTime,$real_end_time,$cost){
+		$db=mysqli_connect('localhost','root','','parking')or die('连接服务器失败');
+		$sq="update history set endTime={$real_end_time},cost={$cost} where username=\"{$username}\" and lotID={$lock_id} and endTime={$endTime}";
+		$result=mysqli_query($db,$sq);
+		mysqli_close($db);
+		return $result;
+	}
+	function change_money($rest_money,$username){
+		$db=mysqli_connect('localhost','root','','parking')or die('连接服务器失败');
+		$sq="update userMessage set balance={$rest_money} where username=\"{$username}\"";
+		$result=mysqli_query($db,$sq);
+		mysqli_close($db);
+		return $result;
+	}
+	function change_lock_id_state($id,$state){
+		$db=mysqli_connect('localhost','root','','parking')or die('连接服务器失败');
+		$sq="update parkingstate set state={$state} where lotID={$id}";
+		$result=mysqli_query($db,$sq);
+		mysqli_close($db);
+		return $result;
+	}
+	function get_username_state($id){
+		$db=mysqli_connect('localhost','root','','parking')or die('连接服务器失败');
+		$sq="select username,state from parkingstate where lotID={$id}";
+		$result=mysqli_query($db,$sq);
+		mysqli_close($db);
+		return $result;
+	}
+	$lock_id=$_POST['lock_id'];
+	$row_modify=mysqli_fetch_assoc(get_username_state($lock_id));
+	$username=$row_modify['username'];
+	echo "<p>{$username}</p>";
+	$state=$row_modify['state'];
+	if($username==$_POST['username']){
+		//算时间，钱数，更新user,history数据表
+		$end_time=time();
+		$row=mysqli_fetch_assoc(get_start_time($username,$lock_id,6));
+		$start_time=$row['startTime'];
+		$used_time=$end_time-$start_time;
+		$fee=$used_time*0.0014;//价格0.01元每秒
+		$fee=round($fee,2);
+		echo "<p>您本次花费为".$fee."元,账户余额为";
+		change_end_time($username,$lock_id,6,$end_time,$fee);
+		$mysqli=new mysqli('localhost','root','','parking');
+			$sql="select balance from usermessage where username='".$username."'";
+			$result1=$mysqli->query($sql);
+			$row1=mysqli_fetch_row($result1);
+			$mysqli->close();
+		$rest_money=$row1[0]-$fee;
+		echo $rest_money."元。</p>";
+		change_money($rest_money,$username);
+		change_lock_id_state($lock_id,0);
+	}
+	?>
+</body>
+</html>
